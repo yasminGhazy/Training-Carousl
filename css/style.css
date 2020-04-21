@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0px;
+  outline: none;
+  font-family: 'Poppins', sans-serif; }
+
+img {
+  width: 100%;
+  height: 400px; }
+
+.slider-items-container {
+  position: relative; }
+  .slider-items-container .slide-item {
+    display: none; }
+  .slider-items-container .text {
+    top: 0;
+    left: 50px;
+    color: #fff;
+    position: absolute; }
+
+.slider {
+  display: block;
+  margin: 20px;
+  position: relative; }
+  .slider .slider-prev,
+  .slider .slider-next {
+    top: 50%;
+    padding: 20px;
+    background: transparent;
+    cursor: pointer;
+    color: #fff;
+    position: absolute;
+    border: 0px;
+    outline-style: none; }
+  .slider .slider-next {
+    right: 50px; }
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s; }
+
+@-webkit-keyframes fade {
+  from {
+    opacity: .4; }
+  to {
+    opacity: 1; } }
+
+@keyframes fade {
+  from {
+    opacity: .4; }
+  to {
+    opacity: 1; } }
