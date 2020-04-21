@@ -1,9 +1,9 @@
 # Carousl # 
 > 
 > ## Body ##
->> - Slider show
+>> - 2 Slider show
 >> - Arrows to switch
 > ## Scenario ##
->> - Once document ready , first img in slider appear .
+>> - Once document ready , first img of each slider appears .
 >> - Right and left arrows to switch imgs.
 
