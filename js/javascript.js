@@ -1,5 +1,5 @@
 
-class carousel {
+class Carousel {
     constructor(selector) {
         this.selector = selector;
         this.sliders = document.querySelectorAll(this.selector);
@@ -17,55 +17,49 @@ class carousel {
     }
     run() {
         for (let i = 0; i < this.sliders.length; i++) {
-
-            //* add listener to each prev /next btn in each slider
-            
+            //* add listener to each prev /next btn in each slider  
             let prevArrow = this.sliders[i].querySelector('.slider-prev');
-          
-                prevArrow.addEventListener('click', function (e) {
-                    let parent = e.target.parentElement; //*or e.path[1/2]
-                    let itemsContainer = parent.querySelector(".slider-items-container");
-                    let index = itemsContainer.getAttribute("id");
+            prevArrow.addEventListener('click', function (e) {
+                let parent = e.target.parentElement; //*or e.path[1/2]
+                let itemsContainer = parent.querySelector(".slider-items-container");
+                let index = itemsContainer.getAttribute("id");
+                let slides = parent.querySelectorAll(".slide-item");
+                index--;
+                if (index == 0) {
+                    slides[index].style.display = "none";
+                    index = slides.length;
+                    slides[index - 1].style.display = "block";
+                }
+                else {
+                    slides[index].style.display = "none";
+                    slides[index - 1].style.display = "block";
+                }
+                itemsContainer.setAttribute("id", index)
+            });
 
-                    let slides = parent.querySelectorAll(".slide-item");
-                    index--;
-                    if (index == 0) {
-
-                        slides[index].style.display = "none";
-                        index = slides.length;
-                        slides[index - 1 ].style.display = "block";
-                    }
-                    else {
-                        slides[index].style.display = "none";
-                        slides[index - 1 ].style.display = "block";
-                    }
-                    itemsContainer.setAttribute("id", index)
-                });
-            
 
             let nextArrow = this.sliders[i].querySelector('.slider-next');
-                nextArrow.addEventListener('click', function (e) {
-                    let parent = e.target.parentElement;
-                    let itemsContainer = parent.querySelector(".slider-items-container");
-                    let index = itemsContainer.getAttribute("id");
-                    let slides = parent.querySelectorAll(".slide-item");
-                    index++;
-                    if (index > slides.length) {
+            nextArrow.addEventListener('click', function (e) {
+                let parent = e.target.parentElement;
+                let itemsContainer = parent.querySelector(".slider-items-container");
+                let index = itemsContainer.getAttribute("id");
+                let slides = parent.querySelectorAll(".slide-item");
+                index++;
+                if (index > slides.length) {
+                    slides[index - 2].style.display = "none";
+                    index = 1;
+                    slides[index - 1].style.display = "block";
+                }
+                else {
+                    slides[index - 2].style.display = "none";
+                    slides[index - 1].style.display = "block";
+                }
+                itemsContainer.setAttribute("id", index)
+            });
 
-                        slides[index - 2 ].style.display = "none";
-                        index = 1;
-                        slides[index - 1 ].style.display = "block";
-                    }
-                    else {
-                        slides[index - 2 ].style.display = "none";
-                        slides[index - 1 ].style.display = "block";
-                    }
-                    itemsContainer.setAttribute("id", index)
-                });
-            
         }
     }
 }
-let myCarousel = new carousel('.slider');
+let myCarousel = new Carousel('.slider');
 myCarousel.init();
 myCarousel.run();

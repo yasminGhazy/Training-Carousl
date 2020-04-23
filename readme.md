@@ -1,4 +1,4 @@
-# Carousl # 
+# Carousel # 
 > 
 > ## Body ##
 >> - 2 Slider show
